@@ -51,11 +51,12 @@ func (Codec) serialize(root *TreeNode) string {
 
 /*反序列化 先序*/
 func (Codec) deserialize(data string) *TreeNode {
-	sp := strings.Split(data, ",")
+
 	//特殊处理
-	if(len(sp) == 0){
+	if(len(data) == 0){
 		return nil
 	}
+	sp := strings.Split(data, ",")
 
 	var build func() *TreeNode
 	build = func() *TreeNode {
@@ -116,13 +117,79 @@ func deserializeH(data [] string) (*TreeNode,[] string) {
 	return &TreeNode{val, left, right},data
 }
 
+/* 二叉树序列化为字符串 层序BFS*/
+func (Codec) serializeBFS(root *TreeNode) string {
+	q := []*TreeNode{root} //队列
+	res := []string{}
+	for len(q) != 0 {
+		node := q[0]
+		q = q[1:]
+		if node != nil {
+			res = append(res, strconv.Itoa(node.Val))
+			q = append(q, node.Left)
+			q = append(q, node.Right)
+		} else {
+			res = append(res, "null")
+		}
+	}
+	return strings.Join(res, ",")
+}
+
+/* 字符串反序列化为二叉树 层序BFS*/
+func (Codec) deserializebfs(data string) *TreeNode {
+
+	if len(data) == 0 {
+		return nil
+	}
+	list := strings.Split(data, ",")
+
+	//获取第一个值，创建树根，入队
+	Val, _ := strconv.Atoi(list[0])
+	root := &TreeNode{Val: Val}
+	q := []*TreeNode{root}
+	cursor := 1
+
+	//cursor下标取数
+	for cursor < len(list) {
+
+		//记录队列第一个值、获取数组未取出的两个节点
+		node := q[0]
+		q = q[1:]
+		leftVal := list[cursor]
+		rightVal := list[cursor+1]
+
+		//非X则创建子树 并 把子树值入队
+		if leftVal != "null" {
+			v, _ := strconv.Atoi(leftVal)
+			leftNode := &TreeNode{Val: v}
+			node.Left = leftNode
+			q = append(q, leftNode)
+		}
+		if rightVal != "null" {
+			v, _ := strconv.Atoi(rightVal)
+			rightNode := &TreeNode{Val: v}
+			node.Right = rightNode
+			q = append(q, rightNode)
+		}
+
+		//左右因此+2
+		cursor += 2
+	}
+	return root
+}
 
 //
 func main() {
-	var data = "1,2,null,4,null,null,3,null,null"
+/*	var data = "1,2,null,4,null,null,3,null,null"
+	deser := Constructor()
+	root := deser.deserialize(data)
+	datas := deser.serialize(root)*/
+
+	var data = "1,2,3,null,null,4,5,null,null,null,null"
 	//ser := Constructor();
 	deser := Constructor()
-	root := deser.deserializeD(data)
-	datas := deser.serializeD(root)
+	root := deser.deserializebfs(data)
+	datas := deser.serializeBFS(root)
+
 	println(datas)
 }
