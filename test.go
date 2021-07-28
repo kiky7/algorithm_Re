@@ -1,41 +1,51 @@
 package main
 
-// 代表分隔符的字符
-const SEP = ",";
-// 代表 null 空指针的字符
-const EMPTY = "#";
-// 用于拼接字符串
-var sb = "";
-
+/**
+ * Definition for a binary tree node.
+ */
 type TreeNode struct {
-	val string
-	left *TreeNode
-	right *TreeNode
+	Val int
+	Left *TreeNode
+	Right *TreeNode
 }
 
 
-/* 主函数，将二叉树序列化为字符串 */
-func serialize( root *TreeNode) string{
- 	sb := "";
-	serializeH(root, sb);
-	return sb;
+func constructMaximumBinaryTree(nums []int) *TreeNode {
+	if(len(nums) == 0 ){
+		return nil
+	}
+	return build(nums,0,len(nums)-1)
 }
 
-/* 辅助函数，将二叉树存入 StringBuilder */
-func serializeH(root *TreeNode, sb string) {
-	if (root == nil) {
-		sb = sb + EMPTY + SEP;
-		return;
+func build(nums []int,begin int,end int) *TreeNode {
+
+	if(begin > end){
+		return nil
 	}
 
-	//前序遍历位置
-	sb = sb + root.val + SEP;
+	maxVal := nums[0]
+	maxIndex := 0
 
-	serializeH(root.left, sb);
-	serializeH(root.right, sb);
+	for i:=begin;i<end;i++ {
+		if(maxVal < nums[i]){
+			maxVal = nums[i]
+			maxIndex = i
+		}
+	}
+
+	root := &TreeNode{Val: maxVal}
+
+	root.Left = build(nums,begin,maxIndex-1)
+	root.Right = build(nums,maxIndex+1,end)
+
+	return root
 }
+
 
 
 func main() {
-	println(1)
+	data := []int{3,2,1,6,0,5}
+	root := constructMaximumBinaryTree(data)
+
+	println(root)
 }
