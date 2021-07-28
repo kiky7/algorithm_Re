@@ -23,10 +23,10 @@ func build(nums []int,begin int,end int) *TreeNode {
 		return nil
 	}
 
-	maxVal := nums[0]
-	maxIndex := 0
+	maxVal := nums[begin]
+	maxIndex := begin
 
-	for i:=begin;i<end;i++ {
+	for i:=begin;i<=end;i++ {
 		if(maxVal < nums[i]){
 			maxVal = nums[i]
 			maxIndex = i
