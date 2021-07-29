@@ -206,12 +206,12 @@ func (Codec) deserializebfs(data string) *TreeNode {
 	return root
 }
 
-
+/*
 func main() {
-/*	var data = "1,2,null,4,null,null,3,null,null"
+	var data = "1,2,null,4,null,null,3,null,null"
 	deser := Constructor()
 	root := deser.deserialize(data)
-	datas := deser.serialize(root)*/
+	datas := deser.serialize(root)
 
 	var data = "1,2,3,null,null,4,5,null,null,null,null"
 	//ser := Constructor();
@@ -220,4 +220,4 @@ func main() {
 	datas := deser.serializeBFS(root)
 
 	println(datas)
-}
+}*/

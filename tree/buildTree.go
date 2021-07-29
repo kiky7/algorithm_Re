@@ -11,7 +11,7 @@ package tree
  * @param inorder
  * @return *TreeNode
  */
-func buildTree(preorder []int, inorder []int) *TreeNode {
+func BuildTree(preorder []int, inorder []int) *TreeNode {
 	if(len(preorder) == 0 || len(inorder) == 0){
 		return nil
 	}
@@ -54,24 +54,11 @@ func buildH(preorder []int,pb int,pe int, inorder []int,ib int,ie int) *TreeNode
 
 
 
-func main() {
-
-	/*	var data = "1,2,null,4,null,null,3,null,null"
-		deser := Constructor()
-		root := deser.deserialize(data)
-		datas := deser.serialize(root)*/
-
-	/*	var data = "1,2,3,null,null,4,5,null,null,null,null"
-		//ser := Constructor();
-		deser := Constructor()
-		root := deser.deserializebfs(data)
-		datas := deser.serializeBFS(root)
-
-		println(datas)*/
+/*func main() {
 
 	preorder := []int{1,2,5,4,6,7,3,8,9}
 	inorder := []int{5,2,6,4,7,1,8,3,9}
-	root := buildTree(preorder,inorder)
+	root := BuildTree(preorder,inorder)
 
 	println(root)
-}
+}*/
