@@ -1,3 +1,9 @@
+/*
+ * @author:kiky
+ * @date: 2021/7/20 10:42
+ * @Description: 构建二叉树
+**/
+
 package tree
 
 import (
@@ -5,15 +11,12 @@ import (
 	"strings"
 )
 
-
-
-/*type Codec struct{}
-
-func Constructor() (_ Codec) {
-	return
-}*/
-
-/*序列化  先序*/
+/**
+ * @Description: 序列化  先序1
+ * @receiver Codec
+ * @param root
+ * @return string
+ */
 func (Codec) serialize(root *TreeNode) string {
 	//特殊处理
 	if(root == nil){
@@ -35,7 +38,12 @@ func (Codec) serialize(root *TreeNode) string {
 	return sb.String()
 }
 
-/*反序列化 先序*/
+/**
+ * @Description: 反序列化 先序1
+ * @receiver Codec
+ * @param data
+ * @return *TreeNode
+ */
 func (Codec) deserialize(data string) *TreeNode {
 
 	//特殊处理
@@ -57,14 +65,26 @@ func (Codec) deserialize(data string) *TreeNode {
 	return build()
 }
 
-/* 主函数，将二叉树序列化为字符串 先序*/
+
+
+
+/**
+ * @Description: 主函数，将二叉树序列化为字符串 先序2
+ * @receiver Codec
+ * @param root
+ * @return string
+ */
 func (Codec) serializeD( root *TreeNode) string{
 	sb := ""
 	serializeH(root, &sb);
 	return sb;
 }
 
-/* 辅助函数，将二叉树存入 */
+/**
+ * @Description: 辅助函数，将二叉树存入
+ * @param root
+ * @param sb
+ */
 func serializeH(root *TreeNode, sb *string) {
 	if (root == nil) {
 		*sb = *sb + EMPTY + SEP;
@@ -78,7 +98,13 @@ func serializeH(root *TreeNode, sb *string) {
 	serializeH(root.Right, sb);
 }
 
-/*主函数，将字符串反序列化为二叉树  先序*/
+
+/**
+ * @Description: 主函数，将字符串反序列化为二叉树  先序2
+ * @receiver Codec
+ * @param data
+ * @return *TreeNode
+ */
 func (Codec) deserializeD(data string) *TreeNode {
 	sp := strings.Split(data,SEP)
 	if(len(sp) == 0){
@@ -88,7 +114,12 @@ func (Codec) deserializeD(data string) *TreeNode {
 	return re
 }
 
-/* 辅助函数，节点插入二叉树 */
+/**
+ * @Description: 辅助函数，节点插入二叉树
+ * @param data
+ * @return *TreeNode
+ * @return []
+ */
 func deserializeH(data [] string) (*TreeNode,[] string) {
 	if data[0] == "null" {
 		data = data[1:]
@@ -103,7 +134,13 @@ func deserializeH(data [] string) (*TreeNode,[] string) {
 	return &TreeNode{val, left, right},data
 }
 
-/* 二叉树序列化为字符串 层序BFS*/
+
+/**
+ * @Description: 二叉树序列化为字符串 层序BFS
+ * @receiver Codec
+ * @param root
+ * @return string
+ */
 func (Codec) serializeBFS(root *TreeNode) string {
 	q := []*TreeNode{root} //队列
 	res := []string{}
@@ -121,7 +158,12 @@ func (Codec) serializeBFS(root *TreeNode) string {
 	return strings.Join(res, ",")
 }
 
-/* 字符串反序列化为二叉树 层序BFS*/
+/**
+ * @Description: 字符串反序列化为二叉树 层序BFS
+ * @receiver Codec
+ * @param data
+ * @return *TreeNode
+ */
 func (Codec) deserializebfs(data string) *TreeNode {
 
 	if len(data) == 0 {
@@ -164,7 +206,7 @@ func (Codec) deserializebfs(data string) *TreeNode {
 	return root
 }
 
-//
+
 func main() {
 /*	var data = "1,2,null,4,null,null,3,null,null"
 	deser := Constructor()
