@@ -5,15 +5,18 @@
 
 package main
 
-import "algorithm_Re/tree"
+import (
+	"algorithm_Re/tree"
+)
 
 
 
 func main() {
 
-	inorder := []int{5,2,6,4,7,1,8,3,9}
-	postorder := []int{5,6,7,4,2,8,9,3,1}
-	root := tree.BuildTreeA(inorder,postorder)
+	var data = "1,2,null,4,null,null,2,null,4"
+	deser := tree.Constructor()
+	root := deser.Deserialize(data)
+	re := tree.FindDuplicateSubtrees(root)
 
-	println(root)
+	println(re)
 }

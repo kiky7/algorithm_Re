@@ -44,7 +44,7 @@ func (Codec) serialize(root *TreeNode) string {
  * @param data
  * @return *TreeNode
  */
-func (Codec) deserialize(data string) *TreeNode {
+func (Codec) Deserialize(data string) *TreeNode {
 
 	//特殊处理
 	if(len(data) == 0){
@@ -54,6 +54,11 @@ func (Codec) deserialize(data string) *TreeNode {
 
 	var build func() *TreeNode
 	build = func() *TreeNode {
+
+		if(len(sp) == 0){
+			return nil
+		}
+
 		if sp[0] == "null" {
 			sp = sp[1:]
 			return nil
@@ -76,8 +81,8 @@ func (Codec) deserialize(data string) *TreeNode {
  */
 func (Codec) serializeD( root *TreeNode) string{
 	sb := ""
-	serializeH(root, &sb);
-	return sb;
+	serializeH(root, &sb)
+	return sb
 }
 
 /**
@@ -105,7 +110,7 @@ func serializeH(root *TreeNode, sb *string) {
  * @param data
  * @return *TreeNode
  */
-func (Codec) deserializeD(data string) *TreeNode {
+func (Codec) DeserializeD(data string) *TreeNode {
 	sp := strings.Split(data,SEP)
 	if(len(sp) == 0){
 		return nil
@@ -121,6 +126,11 @@ func (Codec) deserializeD(data string) *TreeNode {
  * @return []
  */
 func deserializeH(data [] string) (*TreeNode,[] string) {
+
+	if(len(data) == 0){
+		return nil,data
+	}
+
 	if data[0] == "null" {
 		data = data[1:]
 		return nil,data
