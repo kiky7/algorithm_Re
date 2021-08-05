@@ -174,7 +174,7 @@ func (Codec) serializeBFS(root *TreeNode) string {
  * @param data
  * @return *TreeNode
  */
-func (Codec) deserializebfs(data string) *TreeNode {
+func (Codec) Deserializebfs(data string) *TreeNode {
 
 	if len(data) == 0 {
 		return nil
@@ -194,7 +194,10 @@ func (Codec) deserializebfs(data string) *TreeNode {
 		node := q[0]
 		q = q[1:]
 		leftVal := list[cursor]
-		rightVal := list[cursor+1]
+		var rightVal string
+		if(cursor+1 < len(list)){
+			rightVal = list[cursor+1]
+		}
 
 		//非X则创建子树 并 把子树值入队
 		if leftVal != "null" {

@@ -5,13 +5,28 @@
 
 package tree
 
+var rank int
+var re int
+
+
 /**
  * @Description:  二叉搜索树中第K小的元素--230
  * @param root
  * @param k
  * @return int
  */
-func kthSmallest(root *TreeNode, k int) int {
+func KthSmallest(root *TreeNode, k int) int {
 
-	return 1
+	if(root == nil){
+		return 0
+	}
+
+	KthSmallest(root.Left,k)
+	rank++
+	//比较
+	if(rank == k){
+		re = root.Val
+	}
+	KthSmallest(root.Right,k)
+	return re
 }

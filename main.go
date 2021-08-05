@@ -13,10 +13,10 @@ import (
 
 func main() {
 
-	var data = "1,2,null,4,null,null,2,null,4"
+	var data = "9,3,10,2,4,null,null,1,null"
 	deser := tree.Constructor()
-	root := deser.Deserialize(data)
-	re := tree.FindDuplicateSubtrees(root)
+	root := deser.Deserializebfs(data)
+	re := tree.KthSmallest(root,4)
 
 	println(re)
 }
