@@ -13,10 +13,10 @@ import (
 
 func main() {
 
-	var data = "9,3,10,2,4,null,null,1,null"
+	var data = "5,3,6,2,4,null,null,1,null"
 	deser := tree.Constructor()
 	root := deser.Deserializebfs(data)
-	re := tree.KthSmallest(root,4)
+	re := tree.ConvertBST(root)
 
 	println(re)
 }
