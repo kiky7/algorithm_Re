@@ -52,6 +52,30 @@ func ConvertBST(root *TreeNode) *TreeNode {
 	return root
 }
 
+
+/**
+ * @Description: 二叉搜索树中的搜索-700
+给定二叉搜索树（BST）的根节点和一个值。 你需要在BST中找到节点值等于给定值的节点。
+返回以该节点为根的子树。 如果节点不存在，则返回 NULL。
+ * @param root
+ * @param val
+ * @return *TreeNode
+ */
+func SearchBST(root *TreeNode, val int) *TreeNode {
+
+	if( root == nil || root.Val == val){
+		return root
+	}
+
+	if root.Val > val {
+		return SearchBST(root.Left,val)
+	}
+
+	return SearchBST(root.Right,val)
+}
+
+
+
 /*
 func main() {
 

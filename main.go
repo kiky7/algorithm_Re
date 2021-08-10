@@ -16,7 +16,8 @@ func main() {
 	var data = "5,3,6,2,4,null,null,1,null"
 	deser := tree.Constructor()
 	root := deser.Deserializebfs(data)
-	re := tree.ConvertBST(root)
+	re := tree.SearchBST(root,7)
+
 
 	println(re)
 }
