@@ -75,6 +75,26 @@ func SearchBST(root *TreeNode, val int) *TreeNode {
 }
 
 
+/**
+ * @Description:验证二叉搜索树--98
+ * @param root
+ * @return bool
+ */
+func IsValidBST(root *TreeNode) bool {
+	return helper(root, nil, nil)
+}
+
+func helper(root *TreeNode, lower  *TreeNode, upper  *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+	if( lower !=nil && root.Val <= lower.Val || upper !=nil && root.Val >= upper.Val) {
+		return false
+	}
+	return helper(root.Left, lower, root) && helper(root.Right, root, upper)
+}
+
+
 
 /*
 func main() {

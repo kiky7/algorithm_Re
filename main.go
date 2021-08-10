@@ -13,10 +13,11 @@ import (
 
 func main() {
 
-	var data = "5,3,6,2,4,null,null,1,null"
+	//var data = "5,3,6,2,4,null,null,1,null"
+	var data = "5,1,7,null,null,6,8"
 	deser := tree.Constructor()
 	root := deser.Deserializebfs(data)
-	re := tree.SearchBST(root,7)
+	re := tree.IsValidBST(root)
 
 
 	println(re)
