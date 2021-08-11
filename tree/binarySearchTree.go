@@ -95,6 +95,17 @@ func helper(root *TreeNode, lower  *TreeNode, upper  *TreeNode) bool {
 }
 
 
+/**
+ * @Description:701. 二叉搜索树中的插入操作
+ * @param root
+ * @param val
+ * @return *TreeNode
+ */
+func insertIntoBST(root *TreeNode, val int) *TreeNode {
+
+	return root
+}
+
 
 /*
 func main() {
