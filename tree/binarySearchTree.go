@@ -60,7 +60,7 @@ func ConvertBST(root *TreeNode) *TreeNode {
  * @param root
  * @param val
  * @return *TreeNode
- */
+*/
 func SearchBST(root *TreeNode, val int) *TreeNode {
 
 	if( root == nil || root.Val == val){
@@ -84,6 +84,14 @@ func IsValidBST(root *TreeNode) bool {
 	return helper(root, nil, nil)
 }
 
+
+/**
+ * @Description: 验证二叉搜索树--辅助函数
+ * @param root
+ * @param lower
+ * @param upper
+ * @return bool
+ */
 func helper(root *TreeNode, lower  *TreeNode, upper  *TreeNode) bool {
 	if root == nil {
 		return true
@@ -106,6 +114,16 @@ func insertIntoBST(root *TreeNode, val int) *TreeNode {
 	return root
 }
 
+
+/**
+ * @Description:450. 删除二叉搜索树中的节点
+ * @param root
+ * @param key
+ * @return *TreeNode
+ */
+func deleteNode(root *TreeNode, key int) *TreeNode {
+	return root
+}
 
 /*
 func main() {
