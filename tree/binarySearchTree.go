@@ -109,7 +109,19 @@ func helper(root *TreeNode, lower  *TreeNode, upper  *TreeNode) bool {
  * @param val
  * @return *TreeNode
  */
-func insertIntoBST(root *TreeNode, val int) *TreeNode {
+func InsertIntoBST(root *TreeNode, val int) *TreeNode {
+
+	if (root == nil) {
+		return &TreeNode{Val: val}
+	}
+
+	if(root.Val > val){
+		root.Left = InsertIntoBST(root.Left,val)
+	}
+
+	if(root.Val < val){
+		root.Right = InsertIntoBST(root.Right,val)
+	}
 
 	return root
 }
