@@ -133,9 +133,79 @@ func InsertIntoBST(root *TreeNode, val int) *TreeNode {
  * @param key
  * @return *TreeNode
  */
-func deleteNode(root *TreeNode, key int) *TreeNode {
+func DeleteNode(root *TreeNode, key int) *TreeNode {
+
+	if(root == nil){return nil}
+	if(root.Val == key){
+		//无子节点\有一个子节点
+		if (root.Left == nil) {
+			return root.Right
+		}
+		if (root.Right == nil) {
+			return root.Left
+		}
+		//有两个子节点
+		min := getMin(root.Right) //获取右子树中最小的节点
+		root.Val = min.Val //替换根
+		root.Right = DeleteNode(root.Right,min.Val) //删除右子树中最小的节点
+	}
+
+	if(root.Val > key){
+		root.Left = DeleteNode(root.Left,key)
+	}
+
+	if(root.Val < key){
+		root.Right = DeleteNode(root.Right,key)
+	}
 	return root
 }
+
+/**
+ * @Description: 获取树的最小值
+ * @param root
+ * @return TreeNode
+ */
+func getMin(node *TreeNode)  *TreeNode{
+	for node.Left != nil {
+		node = node.Left
+	}
+	return node
+}
+
+
+func DdeleteNode(root *TreeNode, key int) *TreeNode {
+	// 空树判断
+	if root == nil {
+		return nil
+	}
+	// 找到需要被删除的节点
+	if root.Val == key {
+		// 没有左子树，让right代替root的位置
+		if root.Left == nil {
+			return root.Right
+		}
+		// 没有右子树,让left代替root的位置
+		if root.Right == nil {
+			return root.Left
+		}
+		// 找后继节点
+		next := root.Right
+		for next.Left != nil {
+			next = next.Left
+		}
+		root.Right = DdeleteNode(root.Right, next.Val)
+		root.Val = next.Val
+		return root
+	}
+	if root.Val > key {
+		root.Left = DdeleteNode(root.Left, key)
+	} else {
+		root.Right = DdeleteNode(root.Right, key)
+	}
+	return root
+}
+
+
 
 /*
 func main() {
