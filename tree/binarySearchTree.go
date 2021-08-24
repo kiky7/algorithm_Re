@@ -173,36 +173,30 @@ func getMin(node *TreeNode)  *TreeNode{
 }
 
 
-func DdeleteNode(root *TreeNode, key int) *TreeNode {
-	// 空树判断
-	if root == nil {
-		return nil
+/**
+ * @Description: n个数字组成的二叉搜索树种树 ---96
+ * @param n
+ * @return int
+ */
+func numTrees(n int) int {
+	return count(1,n)
+}
+
+/**
+ * @Description:
+ * @param be
+ * @param en
+ * @return int
+ */
+func count(be int,en int)  int{
+
+	num := 0
+
+	for i:=be;i<=en;i++ {
+
 	}
-	// 找到需要被删除的节点
-	if root.Val == key {
-		// 没有左子树，让right代替root的位置
-		if root.Left == nil {
-			return root.Right
-		}
-		// 没有右子树,让left代替root的位置
-		if root.Right == nil {
-			return root.Left
-		}
-		// 找后继节点
-		next := root.Right
-		for next.Left != nil {
-			next = next.Left
-		}
-		root.Right = DdeleteNode(root.Right, next.Val)
-		root.Val = next.Val
-		return root
-	}
-	if root.Val > key {
-		root.Left = DdeleteNode(root.Left, key)
-	} else {
-		root.Right = DdeleteNode(root.Right, key)
-	}
-	return root
+
+	return num
 }
 
 
