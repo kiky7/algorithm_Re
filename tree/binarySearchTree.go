@@ -5,6 +5,8 @@
 
 package tree
 
+import "algorithm_Re/lib"
+
 var rank int
 var re int
 
@@ -178,36 +180,49 @@ func getMin(node *TreeNode)  *TreeNode{
  * @param n
  * @return int
  */
-func numTrees(n int) int {
-	return count(1,n)
+func NumTrees(n int) int {
+	re := lib.ArrTwoCreate(n+1)
+	return count(1,n,re)
 }
 
 /**
- * @Description:
+ * @Description: 辅助函数
  * @param be
  * @param en
+ * @param re
  * @return int
  */
-func count(be int,en int)  int{
+func count(be int,en int,re [][]int)  int{
+
+	if(be > en){
+		return 1
+	}
+
+	if(re[be][en] != 0){
+		return re[be][en]
+	}
 
 	num := 0
-
 	for i:=be;i<=en;i++ {
-
+		left := count(be,i-1,re)
+		right := count(i+1,en,re)
+		num += left * right
 	}
+
+	re[be][en] = num
 
 	return num
 }
 
 
+/*func main() {
 
-/*
-func main() {
-
-	var data = "5,3,6,2,4,null,null,1,null"
+	//var data = "5,3,6,2,4,null,null,1,null"
+	var data = "5,1,7,null,null,6,8"
 	deser := tree.Constructor()
 	root := deser.Deserializebfs(data)
-	re := tree.ConvertBST(root)
+	re := tree.DeleteNode(root,7)
+
 
 	println(re)
 }*/

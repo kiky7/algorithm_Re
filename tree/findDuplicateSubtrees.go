@@ -20,6 +20,13 @@ func FindDuplicateSubtrees(root *TreeNode) []*TreeNode {
 	return ret
 }
 
+/**
+ * @Description: 辅助函数
+ * @param root
+ * @param comMap
+ * @param ret
+ * @return string
+ */
 func dnf(root *TreeNode,comMap map[string]int, ret *[]*TreeNode) string{
 	if root == nil{
 		return ""
