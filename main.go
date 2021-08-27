@@ -12,6 +12,6 @@ import (
 
 func main() {
 
-	re := tree.NumTrees(5)
+	re := tree.NumTreesTwo(5)
 	fmt.Println(re)
 }
