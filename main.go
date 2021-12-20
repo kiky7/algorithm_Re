@@ -12,6 +12,6 @@ import (
 
 func main() {
 
-	re := tree.NumTreesTwo(5)
+	re := tree.GenerateTrees(3)
 	fmt.Println(re)
 }

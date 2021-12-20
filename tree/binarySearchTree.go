@@ -244,6 +244,51 @@ func NumTreesKT(n int) int {
 	return C
 }
 
+/**
+ * @Description:
+ * @param n
+ * @return []*TreeNode
+ */
+func GenerateTrees(n int) []*TreeNode {
+	if n==0 {
+		return nil
+	}
+	return gtHelper(1,n)
+}
+
+/**
+ * @Description: 辅助函数
+ * @param be
+ * @param en
+ * @return []*TreeNode
+ */
+func gtHelper(be int,en int)  []*TreeNode {
+
+	if(be > en){
+		return []*TreeNode{nil}
+	}
+
+	geTree := []*TreeNode{}
+
+	for i:=be;i<=en;i++ {
+
+		//递归构造出左右子树的所有合法二叉搜索树
+		leftTree := gtHelper(be,i-1)
+		rightTree := gtHelper(i+1,en)
+
+		//左右子树组合
+		for _,left := range leftTree{
+			for _,right := range rightTree{
+				currTree := &TreeNode{i,nil,nil}
+				currTree.Left = left
+				currTree.Right = right
+				geTree = append(geTree,currTree)
+			}
+		}
+	}
+	return geTree
+}
+
 
 
 
