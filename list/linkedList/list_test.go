@@ -29,3 +29,18 @@ func TestList(t *testing.T)  {
 	t.Log(re)
 }
 
+func TestListRe(t *testing.T)  {
+	list := List{}
+
+	//1.往单链表末尾追加元素2, 3, 4, 5
+	list.Append(1)
+	list.Append(4)
+	list.Append(3)
+	list.Append(2)
+	list.Append(1)
+
+	t.Log(list)
+	head := list.GetHeadNode()
+	t.Log(IsPalindromeArr(head))
+}
+

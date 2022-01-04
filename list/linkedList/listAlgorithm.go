@@ -6,15 +6,17 @@
 
 package linkedList
 
-import "algorithm_Re/list/list"
+import (
+	"algorithm_Re/list/list"
+)
 
 /**
  * @Description: 反转链表206
  * @param head
  * @return *ListNode
  */
-func reverseList(head *list.ListNode) *list.ListNode {
-	var pre *list.ListNode
+func reverseList(head *Node) *Node {
+	var pre *Node
 	curr := head
 	for curr != nil{
 		next := curr.Next //避免丢失应该先记录
@@ -85,6 +87,27 @@ func HasCycleHash(head *Node) bool {
  * @return bool
  * 双指针
  */
-/*func isPalindrome(head *ListNode) bool {
+func IsPalindrome(head *Node) bool {
+	reList := reverseList(head)
+	if head == reList {
+		return true
+	}
+	return false
+}
 
-}*/
+
+func IsPalindromeArr(head *Node) bool {
+	arr := []Object{}
+	cur := head
+	for cur != nil{
+		arr = append(arr,cur.Data)
+		cur = cur.Next
+	}
+	num:= len(arr)
+	for key,_  := range arr[:num/2]{
+		if arr[key] != arr[num-1-key] {
+			return false
+		}
+	}
+	return true
+}
