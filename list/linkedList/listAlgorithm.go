@@ -8,6 +8,7 @@ package linkedList
 
 import (
 	"algorithm_Re/list/list"
+	"fmt"
 )
 
 /**
@@ -85,17 +86,37 @@ func HasCycleHash(head *Node) bool {
  * @Description: 剑指 Offer II 027. 回文链表
  * @param head
  * @return bool
- * 双指针
+ * 双指针，快慢指针
  */
 func IsPalindrome(head *Node) bool {
-	reList := reverseList(head)
-	if head == reList {
-		return true
+
+	cur:=head
+	//reList := reverseList(head)
+	//fmt.Println(reList)
+	//curRe:=reList
+
+	for cur != nil  { //&& curRe !=nil
+		fmt.Println(cur.Data)
+		/*fmt.Println(curRe.Data)
+		if cur.Data != curRe.Data {
+			return false
+		}*/
+		cur = cur.Next
+		/*curRe = curRe.Next
+
+		fmt.Println(cur.Data)
+		fmt.Println(curRe.Data)*/
 	}
-	return false
+
+	return true
 }
 
-
+/**
+ * @Description: 剑指 Offer II 027. 回文链表
+ * @param head
+ * @return bool
+ * 写入数组方式实现
+ */
 func IsPalindromeArr(head *Node) bool {
 	arr := []Object{}
 	cur := head

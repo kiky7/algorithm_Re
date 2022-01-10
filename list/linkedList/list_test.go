@@ -41,6 +41,6 @@ func TestListRe(t *testing.T)  {
 
 	t.Log(list)
 	head := list.GetHeadNode()
-	t.Log(IsPalindromeArr(head))
+	t.Log(IsPalindrome(head))
 }
 
